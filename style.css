@@ -34,14 +34,25 @@ a {
 /* ---- Layout ---- */
 
 main {
-  margin-top: 5rem;
+  padding-top: 5rem;
   margin-left: 7vw;
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   grid-template-rows: 32px 1fr;
   gap: 120px 3vw;
+  position: relative;
 }
 
+main::before {
+  content: '';
+  width: 48vw;
+  background-color: hsl(207, 33%, 95%);
+  height: 70%;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  border-bottom-left-radius: 50px;
+}
 
 /* ---- Navigation ---- */
 
@@ -49,6 +60,9 @@ nav {
   justify-self: center;
 }
 
+#burger-menu {
+  display: none;
+}
 nav a {
   text-decoration: none;
   margin-right: 2.5rem;
@@ -139,4 +153,111 @@ nav a:active {
 .demo:hover,
 .demo:active {
   background-color: hsla(0, 100%, 68%, 0.589);
+}
+
+
+/* ---- Media Query ---- */
+
+@media (min-width: 1600px) {
+
+  body {
+    font-size: 20px;
+  }
+  .headings h1 {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+
+  .headings p {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  main {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  .headings {
+    margin-top: 0;
+  }
+  .headings h1 {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+}
+
+
+@media (max-width: 992px) {
+
+  .headings h1 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+
+  .preview {
+    display: block;
+    margin-left: 1.5rem;
+  }
+}
+
+@media (max-width: 830px) {
+
+  nav a {
+    margin-right: 2rem;
+  }
+  nav span.dot {
+    width: 0;
+    margin-right: 0;
+  }
+
+  main {
+    grid-template-columns: 1fr 1.2fr;
+  }
+  br {
+    display: none;
+  }
+}
+
+@media (max-width: 670px) {
+
+  main {
+    gap: 70px 0;
+    padding-top: 3rem;
+  }
+
+  main::before {
+    height: 55%;
+  }
+
+  .headings {
+    grid-row-start: 3;
+    grid-column: span 2;
+  }
+  .devices-img {
+    grid-column: span 2;
+    width: 100%;
+  }
+
+  br {
+    display: block;
+  }
+  
+  .headings__new {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  nav {
+    display: none;
+  }
+  #burger-menu {
+    display: block;
+    justify-self: flex-end;
+    margin-right: 7vw;
+    width: 25px;
+    height: 30px
+  }
 }
