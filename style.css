@@ -56,13 +56,15 @@ main::before {
 
 /* ---- Navigation ---- */
 
+.mob-menu,
+#burger-menu {
+  display: none;
+}
+
 nav {
   justify-self: center;
 }
 
-#burger-menu {
-  display: none;
-}
 nav a {
   text-decoration: none;
   margin-right: 2.5rem;
@@ -89,6 +91,7 @@ nav a:active {
   color: hsl(231, 7%, 65%);
   margin-right: 0;
 }
+
 
 /* --- */
 
@@ -250,14 +253,115 @@ nav a:active {
 }
 
 @media (max-width: 380px) {
+
+  main {
+    grid-template-rows: 25px 1fr;
+
+  }
+  .logo {
+    width: 25px;
+  }
+
+  
+  
+/* Mobile Nav */
+
   nav {
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    position: absolute;
+    right: 10%;
+    top: 15vh;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 3px 20px rgba(0,0,0,.1);
+    padding: 1.5rem 0;
   }
-  #burger-menu {
+
+  nav a {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .login {
+    margin-bottom: 0;
+    margin-top: 1rem;
+  }
+
+  .login::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 90%;
+    background: hsla(235, 7%, 65%, 0.438);
+    left: 5%;
+    bottom: 4.3rem
+  }
+
+  .mob-menu {
     display: block;
     justify-self: flex-end;
     margin-right: 7vw;
-    width: 25px;
-    height: 30px
   }
-}
+
+  .nav-icon {
+    position: relative;
+    margin-top: .25rem;
+  }
+
+  .nav-icon,
+  .nav-icon::before,
+  .nav-icon::after {
+    width: 2rem;
+    height: 2px;
+    background-color: black;
+    display: block;
+  }
+
+  .nav-icon::before {
+    content: '';
+    padding: 0;
+    margin: 0;
+    transition: all .2s;
+    position: absolute;
+    top: .5rem;
+  }
+
+  .nav-icon::after {
+    content: '';
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    transition: all .2s;
+    top: 1rem;
+  }
+  
+  .mobile-menu {
+    display: block;
+    justify-self: flex-end;
+    margin-right: 7vw;
+  }
+
+  #burger-menu:checked ~ .mob-menu > .nav-icon {
+    background: transparent;
+  }
+  
+  #burger-menu:checked ~ .mob-menu > .nav-icon::before {
+    transform: rotate(135deg)
+  }
+  
+  #burger-menu:checked ~ .mob-menu > .nav-icon::after {
+    transform: rotate(-135deg);
+    top: .5rem
+  }
+
+  #burger-menu:checked ~ nav {
+    display: flex
+  }
+
+
+};
